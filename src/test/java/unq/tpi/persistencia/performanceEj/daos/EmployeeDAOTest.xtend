@@ -23,8 +23,8 @@ class EmployeeDAOTest {
 			Assert.assertEquals(0,e.departments.length);
 			Assert.assertNull(e.department);
 			Assert.assertEquals(2,e.historicDepartments.length);
-			Assert.assertNull(e.title);					
-			Assert.assertEquals(1,e.historicTitles.length);	
+			Assert.assertNull(e.title);
+			Assert.assertEquals(1,e.historicTitles.length);
 			Assert.assertEquals(51339.0, e.salary, 0);
 			return null;
 		]);
