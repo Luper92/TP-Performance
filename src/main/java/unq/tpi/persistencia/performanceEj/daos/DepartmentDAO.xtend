@@ -17,9 +17,6 @@ class DepartmentDAO {
 	def getByCode(String num) {
 		val session = SessionManager.getSession()
 		session.get(Department, num) as Department
-		//val query = session.createQuery("from Department as d where d.code = :code")
-		//query.setString("code", num)
-		//query.list.get(0) as Department
 	}
 
 	def getAll() {
@@ -33,18 +30,8 @@ class DepartmentDAO {
 	def getByCodeEfficient(String num) {
 		val session = SessionManager.getSession()
 		session.createQuery(
-		//FULLNAME; TITLE and SALARY
-//"Select dep from Department dep inner join fetch dep.employees emp inner join fetch emp.salaries sal inner join fetch emp.titles tit where dep.code = :code  and sal.to = '9999-01-01'"
-//"Select dep from Department dep join fetch dep.employees emp where dep.code = :code"
- 			//"from Department dept join fetch dept.employees as e join fetch e.titles join fetch e.salaries as s where s.to = '9999-01-01' and dept.code = :code"
 "from Department dept join fetch dept.employees as e join fetch e.titles join fetch e.salaries as s where  dept.code = :code and s.to = '9999-01-01'"
-// Department -> Employees -> Title -> Salary
-//Salary -> Employee -> Department
 
-//Select dep from Department dep join fetch dep.employees emp join fetch emp.titles tit join fetch emp.salaries sal where dep.code = :code  
-
-//"from Department dep where dep.code = :code  "
-			 //Se utiliza la fecha indicada en los mappigs. de lo contrario busca tooda la informacion hasta encontrar el indicado.
 			 		)
 		.setParameter("code",num).uniqueResult() as Department
 	}
