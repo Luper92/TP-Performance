@@ -26,9 +26,11 @@ class EmployeeDAO {
 	}
 	
 	def firstTenEmployees(){
-		val query = SessionManager.getSession().createQuery("Select distinct e from Employee e left join e.salaries as s order by s.amount DESC")
+		//val query = SessionManager.getSession().createQuery("Select distinct e from Employee e join fetch e.salaries as s where s.to = '9999-01-01' order by s.amount DESC ")
+		val query = SessionManager.getSession().createQuery("select s.employee from Salary as s where s.to = '9999-01-01' order by s.amount DESC ")
+		//val query2 =SessionManager.getSession().createQuery("Select distinct s from Salary as s where s.to = '9999-01-01' order by s.amount DESC ")
 		      query.setMaxResults(10);
-			  query.list as List<Employee>   
+			  query.list as List<Employee>
 	}
 
 }
