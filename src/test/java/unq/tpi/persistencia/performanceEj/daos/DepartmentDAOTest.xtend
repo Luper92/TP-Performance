@@ -4,6 +4,7 @@ import org.junit.Assert
 import org.junit.Test
 import unq.tpi.persistencia.performanceEj.daos.DepartmentDAO
 import unq.tpi.persistencia.util.SessionManager
+import java.util.Comparator
 
 class DepartmentDAOTest {
 

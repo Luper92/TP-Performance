@@ -2,3 +2,7 @@
 .classpath
 .settings
 .project
+/.idea
+/src/test/xtend-gen
+/src/main/xtend-gen
+Performance-Ej.iml
