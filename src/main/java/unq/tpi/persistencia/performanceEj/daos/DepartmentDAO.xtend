@@ -30,10 +30,11 @@ class DepartmentDAO {
     def getByCodeEfficient(String num) {
         val session = SessionManager.getSession()
         session.createQuery(
-                "from Department dept left outer join fetch dept.employees as e left outer join fetch e.titles left outer join fetch e.salaries as s where  dept.code = :code and s.to = '9999-01-01'"
+                "from Department as d left outer join fetch d.employees as emp left outer join fetch emp.titles left outer join fetch emp.departments as empd left outer join fetch emp.salaries as s where empd.code = :code and d.code = :code and s.to = '9999-01-01' "
 
-        )
-        .setParameter("code",num).uniqueResult() as Department
+        ).setParameter("code",num).uniqueResult as Department
+
+
     }
 
 }
