@@ -13,7 +13,6 @@ class ListadoPagosPorDepto extends AbstractListado {
 
 	override def doListado() throws Exception {
 		//val depto = new DepartmentDAO().getByCode(this.num)
-		
 		val depto = new DepartmentDAO().getByCodeEfficient(this.num)
 
 		newLine()
@@ -21,12 +20,13 @@ class ListadoPagosPorDepto extends AbstractListado {
 		newLine()
 		
 		addColumn("Nombre").addColumn("Titulo").addColumn("Monto").newLine()
-		depto.employees.forEach[
-			addColumn(it.fullName)
-			addColumn(it.title)
-			addColumn(it.salary)
-			newLine()
-		]
+        depto.employees.forEach[
+            addColumn(it.fullName)
+            addColumn(it.title)
+            addColumn(it.salary)
+            newLine()
+        ]
+
 	}
 	
 }
