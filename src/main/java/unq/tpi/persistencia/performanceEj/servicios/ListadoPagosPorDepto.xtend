@@ -1,6 +1,8 @@
 package unq.tpi.persistencia.performanceEj.servicios
 
 import unq.tpi.persistencia.performanceEj.daos.DepartmentDAO
+import java.util.List
+import unq.tpi.persistencia.performanceEj.model.Employee
 
 class ListadoPagosPorDepto extends AbstractListado {
 

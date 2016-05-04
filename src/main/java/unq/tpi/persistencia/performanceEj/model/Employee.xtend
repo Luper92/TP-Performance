@@ -4,6 +4,7 @@ import java.util.Date
 import java.util.List
 import java.util.Set
 import org.eclipse.xtend.lib.annotations.Accessors
+import javax.persistence.PostLoad
 
 @Accessors
 public class Employee {
@@ -18,22 +19,25 @@ public class Employee {
 	Set<String> titles
 	List<String> historicTitles
 	List<Salary> salaries
-	
 
+	@PostLoad
 	def Department getDepartment() {
 		if(departments.isEmpty)
 			return null
 		departments.iterator.next
 	}
-	
+
+	@PostLoad
 	def Double getSalary(){
 		salaries.last.getAmount()
 	}
 
+	@PostLoad
 	def String getFullName() {
 		lastName + ", " + firstName
 	}
-	
+
+	@PostLoad
 	def getTitle(){
 		if(titles.isEmpty())
 			return null

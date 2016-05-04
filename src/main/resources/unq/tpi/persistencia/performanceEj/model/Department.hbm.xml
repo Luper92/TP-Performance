@@ -9,21 +9,21 @@
 			<generator class="assigned" />
 		</id>
 
-		<property name="name" column="dept_name" />
+		<property name="name" column="dept_name" lazy="true"/>
 
-		<set name="employees" table="dept_emp" where="to_date = '9999-01-01'" fetch="join">
+		<set name="employees" table="dept_emp" where="to_date = '9999-01-01'" fetch="join" lazy="true">
 			<key column="dept_no"/>
 			<many-to-many column="emp_no" class="unq.tpi.persistencia.performanceEj.model.Employee" />
 		</set>
 
-		<set name="historicEmployees" table="dept_emp" where="to_date != '9999-01-01'"  fetch="join">
+		<set name="historicEmployees" table="dept_emp" where="to_date != '9999-01-01'"  fetch="join" lazy="true">
 			<key column="dept_no"/>
 			<many-to-many column="emp_no" class="unq.tpi.persistencia.performanceEj.model.Employee" />
 		</set>
 
-		<bag name="managers" table="dept_manager" order-by="from_date"  >
-			<key column="dept_no"/>
-			<many-to-many column="emp_no" class="unq.tpi.persistencia.performanceEj.model.Employee" />
+		<bag name="managers" table="dept_manager" order-by="from_date"  lazy="true" >
+			<key column="dept_no" update="true"/>
+			<many-to-many column="emp_no" class="unq.tpi.persistencia.performanceEj.model.Employee" lazy="false" />
 		</bag>
 	</class>
 </hibernate-mapping>

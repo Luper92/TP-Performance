@@ -34,7 +34,6 @@ class DepartmentDAO {
 
         ).setParameter("code",num).uniqueResult as Department
 
-
     }
 
 }
